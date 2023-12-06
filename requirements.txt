@@ -1,5 +1,6 @@
 flask
 transformers
 nltk
-sklearn
+scikit-learn
 joblib
+requests
