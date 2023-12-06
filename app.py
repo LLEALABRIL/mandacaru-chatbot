@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
 import nltk
 from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
@@ -12,7 +11,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
-model = load('trained_model_SVM.joblib')
+#model = load('trained_model_SVM.joblib')
 
 
 app = Flask(__name__)
@@ -33,7 +32,6 @@ def get_Chat_response(text):
     for step in range(5):
 
         lemmatized = normalize(text)
-        
         input_ids = tokenizer.encode(' '.join(lemmatized), return_tensors='pt')
 
         # Predict using the pre-trained model
@@ -50,7 +48,6 @@ def normalize(text):
     lemma = nltk.WordNetLemmatizer()
     lemmatized = [lemma.lemmatize(word) for word in no_stopwords]
     return lemmatized
+
 if __name__ == '__main__':
     app.run()
-
-

@@ -1,3 +1,5 @@
 flask
 transformers
-torch
+nltk
+sklearn
+joblib
