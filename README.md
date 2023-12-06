@@ -1,2 +1,2 @@
 # Mandacaru-ChatBot
-ChatBot to classify news through sentiments as positive,negative and neutral
+This ChatBot classifies news through sentiments as positive, negative and neutral.
