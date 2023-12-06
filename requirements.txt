@@ -4,3 +4,5 @@ nltk
 scikit-learn
 joblib
 requests
+torch
+torchvision

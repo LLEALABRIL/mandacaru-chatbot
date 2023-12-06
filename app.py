@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
 from transformers import AutoTokenizer
+import pyto
 import nltk
 import json
 import requests
 import os
+import torch
 
 
 nltk.download('wordnet')
