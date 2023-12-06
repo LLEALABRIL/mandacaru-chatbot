@@ -1,16 +1,14 @@
 from flask import Flask, render_template, request
-from transformers import AutoTokenizer
 import nltk
 import json
 import requests
 import os
-import torch
 
 nltk.download('wordnet')
 nltk.download('punkt')
 nltk.download('stopwords')
 
-tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
+#tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
 #model = load('trained_model_SVM.joblib')
 
 url = 'https://mandacaru-sentiment-api.onrender.com/analise-sentimento'
@@ -42,19 +40,10 @@ def chat():
     return sentimento.capitalize()
 
 def get_Chat_response(text):
-
-    # Let's chat for 5 lines
-    for step in range(5):
-
-        lemmatized = normalize(text)
-        input_ids = tokenizer.encode(' '.join(lemmatized), return_tensors='pt')
-
-        # Predict using the pre-trained model
-        output = input_ids
-        
-        # Decode the output using the tokenizer (assuming it's a Hugging Face Transformers tokenizer)
-        response = tokenizer.decode(output[0], skip_special_tokens=True)
-        return response
+    lemmatized = normalize(text)
+    normalized_msg = ' '.join(lemmatized)
+    
+    return normalized_msg
     
 def normalize(text):
     tokens = nltk.word_tokenize(text)
