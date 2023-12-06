@@ -3,6 +3,7 @@ from transformers import AutoTokenizer
 import nltk
 import json
 import requests
+import os
 
 
 nltk.download('wordnet')
@@ -65,4 +66,6 @@ def normalize(text):
     return lemmatized
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 10000))
+    # Run the app, specifying 0.0.0.0 as the host to bind to
+    app.run(host='0.0.0.0', port=port, debug=True)
